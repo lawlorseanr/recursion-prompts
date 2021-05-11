@@ -719,10 +719,10 @@
         expect(multiply(-2, -2)).to.equal(-2 * -2);
         expect(multiply(-8, -3)).to.equal(-8 * -3);
         expect(multiply(-5, -27)).to.equal(-5 * -27);
-        // expect(multiply(-79, -82)).to.equal(-79 * -82);
-        // expect(multiply(-275, -502)).to.equal(-275 * -502);
-        // expect(multiply(-12, -10)).to.equal(-12 * -10);
-        // expect(multiply(-22, -3)).to.equal(-22 * -3);
+        expect(multiply(-79, -82)).to.equal(-79 * -82);
+        expect(multiply(-275, -502)).to.equal(-275 * -502);
+        expect(multiply(-12, -10)).to.equal(-12 * -10);
+        expect(multiply(-22, -3)).to.equal(-22 * -3);
       });
 
       it('should return the product of mixed positive and negative integers', function() {
@@ -730,11 +730,11 @@
         expect(multiply(79, -82)).to.equal(79 * -82);
         expect(multiply(2, -2)).to.equal(2 * -2);
         expect(multiply(5, -27)).to.equal(5 * -27);
-        // expect(multiply(-275, 502)).to.equal(-275 * 502);
-        // expect(multiply(275, -502)).to.equal(275 * -502);
-        // expect(multiply(-8, 3)).to.equal(-8 * 3);
-        // expect(multiply(12, -10)).to.equal(12 * -10);
-        // expect(multiply(-22, 3)).to.equal(-22 * 3);
+        expect(multiply(-275, 502)).to.equal(-275 * 502);
+        expect(multiply(275, -502)).to.equal(275 * -502);
+        expect(multiply(-8, 3)).to.equal(-8 * 3);
+        expect(multiply(12, -10)).to.equal(12 * -10);
+        expect(multiply(-22, 3)).to.equal(-22 * 3);
       });
 
       it('should accept parameters in any order', function() {
@@ -1287,11 +1287,13 @@
       });
 
       it('should return a number', function() {
-        expect(countValuesInObj(input, 'r')).to.be.a('number');
+        var out = countValuesInObj(input, 'r');
+        expect(out).to.be.a('number');
       });
 
       it('should return the count of the occurrences of the property', function() {
-        expect(countValuesInObj(input, 'e')).to.equal(1);
+        var out = countValuesInObj(input, 'e');
+        expect(out).to.equal(1);
         expect(countValuesInObj(input, 'x')).to.equal(0);
         expect(countValuesInObj(input, 'y')).to.equal(1);
         expect(countValuesInObj(input, 't')).to.equal(0);
