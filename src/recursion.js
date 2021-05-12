@@ -304,8 +304,21 @@ expect(countValuesInObj(input, 'p')).to.equal(0);
 */
 var countValuesInObj = function(obj, value) {
 
-  var keys = Object.keys(obj);
   var count = 0;
+  for (var key in obj) {
+    if (obj[key] instanceof Object) {
+      count += countValuesInObj(obj[key], value);
+    }
+
+    if (obj[key] === value) {
+      count += 1;
+    }
+
+  }
+  return count;
+
+  /*
+  var keys = Object.keys(obj);
   var currVal = obj[keys[0]];
 
   if (typeof currVal === 'object') {
@@ -326,12 +339,26 @@ var countValuesInObj = function(obj, value) {
   }
 
   return count + countValuesInObj(newObj, value);
+  */
 
 };
 
 // 24. Find all keys in an object (and nested objects) by a provided name and rename
 // them to a provided new name while preserving the value stored at that key.
 var replaceKeysInObj = function(obj, oldKey, newKey) {
+
+  for (var key in obj) {
+    if (obj[key] instanceof Object) {
+      obj[key] = replaceKeysInObj(obj[key], oldKey, newKey);
+    }
+
+    if (key === oldKey) {
+      obj[newKey] = obj[oldKey];
+      delete obj[oldKey];
+    }
+  }
+  return obj;
+
 };
 
 // 25. Get the first n Fibonacci numbers. In the Fibonacci sequence, each subsequent
